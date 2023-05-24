@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package core;
+
+service CoreService {
+  rpc Register (RegisterRequest) returns (RegisterResponse) {}
+  rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc Validate (ValidateRequest) returns (ValidateResponse) {}
+  rpc ValidateOTP (ValidateOTPRequest) returns (ValidateOTPResponse) {}
+  rpc ResendOTP (ResendOTPRequest) returns (ResendOTPResponse) {}
+ }
+
+// Register User
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  string name = 3;
+  string phoneCode = 4;
+  string phoneNumber = 5;
+  bool termsCondition = 6;
+  string type = 7;
+}
+message RegisterResponse {
+  int32 statusCode = 1;
+  repeated string error = 2;
+  string email = 3;
+}
+
+// Login
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+message LoginResponse {
+  int32 statusCode = 1;
+  repeated string error = 2;
+  string token = 3;
+}
+
+// Validate OTP
+message ValidateOTPRequest {
+    string email = 1;
+    int32 code = 2;
+    string type = 3;
+}
+  message ValidateOTPResponse {
+    int32 statusCode = 1;
+    repeated string error = 2;
+    bool verified = 3;
+    optional string token = 4;
+    optional string userId = 5;
+}
+  
+  // Resend OTP
+  message ResendOTPRequest {
+    string email = 1;
+    string type = 2;
+}
+  message ResendOTPResponse {
+    int32 statusCode = 1;
+    repeated string error = 2;
+    bool sent = 3;
+}
+
+// Validate
+message ValidateRequest {
+  string token = 1;
+}
+message ValidateResponse {
+  int32 statusCode = 1;
+  repeated string error = 2;
+  string id = 3;
+  string email = 4;
+  int32 orgId = 5;
+  string type = 6;
+}
+
+// User
+message User{
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string phoneCode = 4;
+  string phoneNumber = 5;
+  string status = 6;
+  string createdAt = 7;
+  Role role = 8;
+  string meta = 9;
+}
