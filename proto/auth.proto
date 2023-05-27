@@ -75,6 +75,9 @@ message ValidateResponse {
   string type = 6;
 }
 
+message Role{
+  
+}
 // User
 message User{
   string id = 1;
