@@ -68,8 +68,6 @@ message LoginResponse {
   User user = 4;
 }
 
-
-
 // Validate
 message ValidateTokenRequest {
   string token = 1;
@@ -80,18 +78,41 @@ message ValidateResponseRequest {
   optional User user = 3;
 }
 
-message Role{
 
-}
-// User
+
 message User{
   string id = 1;
   string name = 2;
   string email = 3;
-  string phoneCode = 4;
-  string phoneNumber = 5;
-  string status = 6;
+  Phone phone = 4;
+  Status status = 5;
   string createdAt = 7;
-  Role role = 8;
-  string meta = 9;
+  string updatedAt = 8;
+  Role role = 9;
+  optional Notification notification = 10;
+  optional string meta = 10;
+}
+message Role{
+  string id = 1;
+  string name= 2;
+  string updatedAt = 3;
+  string createdAt = 4;
+  optional string meta = 5;
+}
+message Phone {
+  string code = 1;
+  string number = 2;
+}
+message Notification {
+  string id  = 1;
+  string token = 2;
+  string type = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string meta = 6;
+}
+enum Status {
+  Inactive = 0;
+  Active= 1;
+  Suspended = 2;
 }
