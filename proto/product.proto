@@ -21,6 +21,7 @@ message Product {
   string description = 4;
   Coordinate coordinate = 5;
   Location location = 6;
+  repeated File file = 7;
   string updatedAt = 3;
   string createdAt = 4;
   optional string meta = 5;
