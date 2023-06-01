@@ -90,7 +90,7 @@ message User{
   string updatedAt = 8;
   Role role = 9;
   optional Notification notification = 10;
-  optional string meta = 10;
+  optional string meta = 11;
 }
 message Role{
   string id = 1;
