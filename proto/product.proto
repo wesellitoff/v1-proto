@@ -4,16 +4,27 @@ package product;
 
 service ProductService {
     rpc GetRelevantProducts (RelevantPoroductsRequest) returns (RelevantProductsResponse) {}
+    rpc GetProductLocations () return (GetProductLocationsResponse) {}
 }
-  
+
+
 message RelevantPoroductsRequest {
-
+  Coordinate coordinate = 1;
 }
-
 message RelevantProductsResponse {
-    
+    string code = 1;
+    optional string error = 2;
+    repeated Product data = 3;
+}
+message GetProductLocationsResponse {
+  string code = 1;
+  optional string error = 2;
+  ProductLocation location = 3;
 }
 
+message ProductLocation {
+
+}
 message Product {
   string id = 1;
   string productId = 2; // Unique User friendly ID
@@ -22,10 +33,14 @@ message Product {
   Coordinate coordinate = 5;
   Location location = 6;
   repeated File file = 7;
+  repeated Tag tag = 8;
   string updatedAt = 3;
   string createdAt = 4;
   optional string meta = 5;
   Status status = 6;
+}
+message Tag {
+
 }
 message File {
   string id = 1;
