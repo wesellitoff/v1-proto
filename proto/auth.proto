@@ -89,9 +89,9 @@ message User{
   Status status = 5;
   string createdAt = 7;
   string updatedAt = 8;
-  Role role = 9;
-  optional Notification notification = 10;
-  optional string meta = 11;
+  // Role role = 9;
+  // optional Notification notification = 10;
+  // optional string meta = 11;
 }
 message Role{
   string id = 1;
