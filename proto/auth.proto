@@ -28,7 +28,7 @@ message Response {
 message RegisterResponse {
   message Response = 1;
   string phoneCode = 2;
-  string phoneNumber = 2;
+  string phoneNumber = 3;
 }
 
 // Validate OTP
