@@ -21,11 +21,17 @@ message RegisterRequest {
   DeviceType deviceType = 7;
   bool acceptTermsCondition = 8;
 }
+message Response {
+  int32 code = 1;
+  optional string error = 2;
+}
 message RegisterResponse {
   int32 code = 1;
   optional string error = 2;
-  string phoneCode = 3;
-  string phoneNumber = 4;
+  message data {
+    string phoneCode = 3;
+    string phoneNumber = 4;
+  }
 }
 
 // Validate OTP
