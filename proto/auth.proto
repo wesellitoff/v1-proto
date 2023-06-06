@@ -26,12 +26,9 @@ message Response {
   optional string error = 2;
 }
 message RegisterResponse {
-  int32 code = 1;
-  optional string error = 2;
-  message data {
-    string phoneCode = 3;
-    string phoneNumber = 4;
-  }
+  message Response = 1;
+  string phoneCode = 2;
+  string phoneNumber = 2;
 }
 
 // Validate OTP
