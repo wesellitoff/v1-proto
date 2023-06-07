@@ -89,9 +89,13 @@ message User{
   Status status = 5;
   string createdAt = 7;
   string updatedAt = 8;
-  // Role role = 9;
-  // optional Notification notification = 10;
-  // optional string meta = 11;
+  optional Role role = 9;
+  optional Notification notification = 10;
+  optional string meta = 11;
+}
+message Permission {
+  string id = 1;
+  string name= 2;
 }
 message Role{
   string id = 1;
@@ -99,6 +103,7 @@ message Role{
   string updatedAt = 3;
   string createdAt = 4;
   optional string meta = 5;
+  repeated Permission permissions = 6;
 }
 message Phone {
   string code = 1;
