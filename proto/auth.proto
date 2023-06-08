@@ -92,6 +92,7 @@ message User{
   optional Role role = 9;
   optional Notification notification = 10;
   optional string meta = 11;
+  bool verified = 12;
 }
 message Permission {
   string id = 1;
