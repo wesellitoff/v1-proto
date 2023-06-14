@@ -5,6 +5,7 @@ package auth;
 service AuthService {
   rpc Register (RegisterRequest) returns (RegisterResponse) {}
   rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc Validate (ValidateRequest) returns (ValidateResponse) {}
   rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse) {}
   rpc ValidateOTP (ValidateOTPRequest) returns (ValidateOTPResponse) {}
   rpc ResendOTP (ResendOTPRequest) returns (ResendOTPResponse) {}
@@ -27,20 +28,7 @@ message RegisterResponse {
   User data = 3;
 }
 
-// Validate OTP
-message ValidateOTPRequest {
-  string phoneCode = 1;
-  string phoneNumber = 2;
-  int32 code = 3;
-  string type = 4;
-}
-message ValidateOTPResponse {
-  int32 code = 1;
-  optional string error = 2;
-  bool verified = 3;
-  optional string token = 4;
-  optional User user = 5;
-}
+
 
 // Resend OTP
 message ResendOTPRequest {
@@ -70,6 +58,15 @@ message LoginResponse {
 }
 
 // Validate
+message ValidateRequest {
+  string attribute = 1;
+  string input = 2;
+}
+message ValidateResponse {
+  int32 code = 1;
+  optional string error = 2;
+  bool valid = 3;
+}
 message ValidateTokenRequest {
   string token = 1;
 }
@@ -77,6 +74,20 @@ message ValidateTokenResponse {
   int32 code = 1;
   optional string error = 2;
   optional User user = 3;
+}
+// Validate OTP
+message ValidateOTPRequest {
+  string phoneCode = 1;
+  string phoneNumber = 2;
+  int32 code = 3;
+  string type = 4;
+}
+message ValidateOTPResponse {
+  int32 code = 1;
+  optional string error = 2;
+  bool verified = 3;
+  optional string token = 4;
+  optional User user = 5;
 }
 
 
