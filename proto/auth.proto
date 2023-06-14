@@ -48,7 +48,6 @@ message LoginRequest {
   string phoneCode = 1;
   string phoneNumber = 2;
   string password = 3;
-  optional string notificationToken = 4;
 }
 message LoginResponse {
   int32 code = 1;
