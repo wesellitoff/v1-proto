@@ -20,7 +20,7 @@ message RegisterRequest {
   string phoneCode = 4;
   string phoneNumber = 5;
   string password = 6; // minimum length of 8 applied
-  DeviceType deviceType = 7;
+  string deviceType = 7;
   bool acceptTermsCondition = 8;
 }
 message RegisterResponse {
