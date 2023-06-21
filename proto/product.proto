@@ -4,7 +4,7 @@ package product;
 
 service ProductService {
     rpc GetRelevantProducts (RelevantPoroductsRequest) returns (RelevantProductsResponse) {}
-    rpc GetProductLocations () return (GetProductLocationsResponse) {}
+    // rpc GetProductLocations () return (GetProductLocationsResponse) {}
 }
 
 
@@ -40,7 +40,7 @@ message Product {
   Status status = 6;
 }
 message Tag {
-
+// 
 }
 message File {
   string id = 1;
