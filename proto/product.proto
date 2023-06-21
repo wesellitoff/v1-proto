@@ -34,17 +34,17 @@ message Product {
   Location location = 6;
   repeated File file = 7;
   repeated Tag tag = 8;
-  string updatedAt = 3;
-  string createdAt = 4;
-  optional string meta = 5;
-  Status status = 6;
+  string updatedAt = 9;
+  string createdAt = 10;
+  optional string meta = 11;
+  Status status = 12;
 }
 message Tag {
 // 
 }
 message File {
   string id = 1;
-  int userId = 2;
+  int32 userId = 2;
   string url = 3;
   string name = 4;
   string size = 5;
@@ -56,10 +56,10 @@ message Review {
 
 }
 message Coordinate {
-  int longitude = 1;
-  int latitude = 2;
+  int32 longitude = 1;
+  int32 latitude = 2;
 }
-message Locationn {
+message Location {
   string address = 1;
   string city = 2;
   string country = 3;
