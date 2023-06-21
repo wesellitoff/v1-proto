@@ -64,7 +64,7 @@ message Locationn {
   string city = 2;
   string country = 3;
   string state = 4;
-  optional postalCode = 5;
+  optional string postalCode = 5;
 }
 enum Status {
   Unavailable = 0;
