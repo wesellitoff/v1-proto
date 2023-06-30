@@ -10,6 +10,7 @@ service AuthService {
   rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse) {}
   rpc ValidateOTP (ValidateOTPRequest) returns (ValidateOTPResponse) {}
   rpc ResendOTP (ResendOTPRequest) returns (ResendOTPResponse) {}
+  rpc NotificationToken (NotificationTokenRequest) returns (NotificationTokenResponse) {}
  }
 
 // Register User
@@ -28,7 +29,6 @@ message RegisterResponse {
   optional string error = 2;
   User data = 3;
 }
-
 
 
 // Resend OTP
@@ -93,7 +93,16 @@ message ValidateOTPResponse {
   optional User user = 5;
 }
 
-
+// Notification Token
+message NotificationTokenRequest {
+  string type = 1;
+  string token = 2;
+}
+message NotificationTokenResponse {
+  int32 code = 1;
+  optional string error = 2;
+  bool updated = 3;
+}
 
 message User{
   string id = 1;
