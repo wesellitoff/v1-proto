@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthService {
+  rpc Register (RegisterRequest) returns (RegisterResponse) {}
+  rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc ValidateEmail (ValidateEmailRequest) returns (ValidateResponse) {}
+  rpc ValidatePhoneNumber (ValidatePhoneNumberRequest) returns (ValidateResponse) {}
+  rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse) {}
+  rpc ValidateOTP (ValidateOTPRequest) returns (ValidateOTPResponse) {}
+  rpc ResendOTP (ResendOTPRequest) returns (ResendOTPResponse) {}
+ }
+
+// Register User
+message RegisterRequest {
+  string firstName = 1;
+  string lastName = 2;
+  string email = 3;
+  string phoneCode = 4;
+  string phoneNumber = 5;
+  string password = 6; // minimum length of 8 applied
+  string deviceType = 7;
+  bool acceptTermsCondition = 8;
+}
+message RegisterResponse {
+  int32 code = 1;
+  optional string error = 2;
+  User data = 3;
+}
+
+
+// Resend OTP
+message ResendOTPRequest {
+  string phoneCode = 1;
+  string phoneNumber = 2;
+  string type = 3;
+}
+message ResendOTPResponse {
+  int32 code = 1;
+  optional string error = 2;
+  bool sent = 3;
+}
+
+
+// Login
+message LoginRequest {
+  string phoneCode = 1;
+  string phoneNumber = 2;
+  string password = 3;
+}
+message LoginResponse {
+  int32 code = 1;
+  optional string error = 2;
+  string token = 3;
+  User user = 4;
+}
+
+// Validate
+message ValidatePhoneNumberRequest {
+  string code = 1;
+  string number = 2;
+}
+message ValidateEmailRequest {
+  string email = 1;
+}
+message ValidateResponse {
+  int32 code = 1;
+  optional string error = 2;
+  bool valid = 3;
+}
+message ValidateTokenRequest {
+  string token = 1;
+}
+message ValidateTokenResponse {
+  int32 code = 1;
+  optional string error = 2;
+  optional User user = 3;
+}
+// Validate OTP
+message ValidateOTPRequest {
+  string phoneCode = 1;
+  string phoneNumber = 2;
+  int32 code = 3;
+  string type = 4;
+}
+message ValidateOTPResponse {
+  int32 code = 1;
+  optional string error = 2;
+  bool verified = 3;
+  optional string token = 4;
+  optional User user = 5;
+}
+
+message User{
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  Phone phone = 4;
+  Status status = 5;
+  string createdAt = 7;
+  string updatedAt = 8;
+  optional Role role = 9;
+  optional Notification notification = 10;
+  optional string meta = 11;
+  bool verified = 12;
+}
+message Permission {
+  string id = 1;
+  string name= 2;
+}
+message Role{
+  string id = 1;
+  string name= 2;
+  string updatedAt = 3;
+  string createdAt = 4;
+  optional string meta = 5;
+  repeated Permission permissions = 6;
+}
+message Phone {
+  string code = 1;
+  string number = 2;
+}
+message Notification {
+  string id  = 1;
+  string token = 2;
+  string type = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string meta = 6;
+}
+enum Status {
+  Inactive = 0;
+  Active= 1;
+  Suspended = 2;
+}
+enum DeviceType {
+  MOBILE = 0;
+  WEB = 1;
+  API = 2;
+}

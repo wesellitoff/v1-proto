@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package product;
+
+service ProductService {
+    rpc GetRelevantProducts (RelevantPoroductsRequest) returns (RelevantProductsResponse) {}
+    // rpc GetProductLocations () return (GetProductLocationsResponse) {}
+}
+
+
+message RelevantPoroductsRequest {
+  Coordinate coordinate = 1;
+}
+message RelevantProductsResponse {
+    string code = 1;
+    optional string error = 2;
+    repeated Product data = 3;
+}
+message GetProductLocationsResponse {
+  string code = 1;
+  optional string error = 2;
+  ProductLocation location = 3;
+}
+
+message ProductLocation {
+
+}
+message Product {
+  string id = 1;
+  string productId = 2; // Unique User friendly ID
+  string name = 3;
+  string description = 4;
+  Coordinate coordinate = 5;
+  Location location = 6;
+  repeated File file = 7;
+  repeated Tag tag = 8;
+  string updatedAt = 9;
+  string createdAt = 10;
+  optional string meta = 11;
+  Status status = 12;
+}
+message Tag {
+// 
+}
+message File {
+  string id = 1;
+  int32 userId = 2;
+  string url = 3;
+  string name = 4;
+  string size = 5;
+  string updatedAt = 6;
+  string createdAt = 7;
+  optional string meta = 8;
+}
+message Review {
+
+}
+message Coordinate {
+  int32 longitude = 1;
+  int32 latitude = 2;
+}
+message Location {
+  string address = 1;
+  string city = 2;
+  string country = 3;
+  string state = 4;
+  optional string postalCode = 5;
+}
+enum Status {
+  Unavailable = 0;
+  Available= 1;
+  Closed = 2;
+  Sold = 3;
+}
