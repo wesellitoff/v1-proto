@@ -1,15 +1,10 @@
 syntax = "proto3";
 
 package user;
+import "./auth.proto";
 
 service UserService {
-  rpc CreateUser (CreateUser) returns (CreatedUser) {}
-  rpc Login (LoginRequest) returns (LoginResponse) {}
-  rpc ValidateEmail (ValidateEmailRequest) returns (ValidateResponse) {}
-  rpc ValidatePhoneNumber (ValidatePhoneNumberRequest) returns (ValidateResponse) {}
-  rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse) {}
-  rpc ValidateOTP (ValidateOTPRequest) returns (ValidateOTPResponse) {}
-  rpc ResendOTP (ResendOTPRequest) returns (ResendOTPResponse) {}
+  rpc CreateUser (CreateUser) returns (RegisterResponse) {}
  }
 
  // Register User
