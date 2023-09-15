@@ -1,4 +1,3 @@
-import  "auth.proto";
 syntax = "proto3";
 package user;
 
@@ -16,6 +15,12 @@ message Create {
     string password = 6; // minimum length of 8 applied
     string deviceType = 7;
     bool acceptTermsCondition = 8;
+  }
+
+  message RegisterResponse {
+    int32 code = 1;
+    optional string error = 2;
+    User data = 3;
   }
 
 message User{
