@@ -1,7 +1,6 @@
 syntax = "proto3";
-
+import "proto/auth.proto";
 package user;
-import "./auth.proto";
 
 service UserService {
   rpc CreateUser (Create) returns (RegisterResponse) {}
