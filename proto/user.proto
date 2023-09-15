@@ -4,11 +4,11 @@ package user;
 import "./auth.proto";
 
 service UserService {
-  rpc CreateUser (CreateUser) returns (RegisterResponse) {}
+  rpc CreateUser (Create) returns (RegisterResponse) {}
  }
 
- // Register User
-message CreateUser {
+ // Create User
+message Create {
     string firstName = 1;
     string lastName = 2;
     string email = 3;
