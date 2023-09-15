@@ -1,3 +1,29 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc CreateUser (CreateUser) returns (CreatedUser) {}
+  rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc ValidateEmail (ValidateEmailRequest) returns (ValidateResponse) {}
+  rpc ValidatePhoneNumber (ValidatePhoneNumberRequest) returns (ValidateResponse) {}
+  rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse) {}
+  rpc ValidateOTP (ValidateOTPRequest) returns (ValidateOTPResponse) {}
+  rpc ResendOTP (ResendOTPRequest) returns (ResendOTPResponse) {}
+ }
+
+ // Register User
+message CreateUser {
+    string firstName = 1;
+    string lastName = 2;
+    string email = 3;
+    string phoneCode = 4;
+    string phoneNumber = 5;
+    string password = 6; // minimum length of 8 applied
+    string deviceType = 7;
+    bool acceptTermsCondition = 8;
+  }
+
 message User{
     int32 id = 1;
     int32 roleId = 2;
