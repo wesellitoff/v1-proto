@@ -1,5 +1,5 @@
+import  "auth.proto";
 syntax = "proto3";
-import public "auth.proto";
 package user;
 
 service UserService {
