@@ -87,7 +87,6 @@ message ValidateOTPRequest {
 message ValidateOTPResponse {
   int32 code = 1;
   optional string error = 2;
-  bool verified = 3;
   optional string token = 4;
   optional User user = 5;
 }
